@@ -1,9 +1,11 @@
 CC = clang
-CFLAGS += -Wall -Wextra -Werror --std=c17
+CFLAGS = -Wall -Wextra -Werror
 
-pfusch: pfusch.c
+all: simulator
+
+simulator: main.o game.o board.o utils.o
+	$(CC) $(CFLAGS) -o simulator main.o game.o board.o utils.o
 
 clean:
-	rm -f pfusch *.o
+	rm -f *.o simulator
 
-.PHONY: clean
